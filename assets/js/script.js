@@ -34,11 +34,22 @@ const getData = (event) => {
       date: date,
     };
     fetchPostData(data);
-    document
-      .getElementById("button-modal")
-      .classList.remove("visually-hidden");
+    fetchGetData().then(result =>
+        dataModalHandler(result)
+    )
+
+    
   }
 };
+const dataModalHandler = (userData) => {
+    console.log(userData)
+    document.getElementById("modalUsername").innerHTML = userData.username;
+    document.getElementById("modalPassword").innerHTML = userData.password;
+    document.getElementById("modalCheck").innerHTML = userData.checkbox;
+    document.getElementById("modalDate").innerHTML = userData.date;
+    openModal()
+}
+
 
 const validityFormHandler = (
   username,
@@ -62,37 +73,45 @@ const validityFormHandler = (
 
   if (username.trim() == "") {
     validityForm.username = false;
+    document.getElementById('formUsername').classList.add('invalid')
     document.getElementById("error-username").innerHTML =
       "<p id='error-username' class='error'>Please insert a valid username</p>";
   } else {
     validityForm.username = true;
+    document.getElementById('formUsername').classList.remove('invalid')
     document.getElementById("error-username").innerHTML =
       "<p id='error-username'></p>";
   }
   if (password.trim() == "") {
     validityForm.password = false;
+    document.getElementById('formPassword').classList.add('invalid')
     document.getElementById("error-password").innerHTML =
       "<p id='error-password' class='error'>Please insert a valid password</p>";
   } else {
     validityForm.password = true;
+    document.getElementById('formPassword').classList.remove('invalid')
     document.getElementById("error-password").innerHTML =
       '<p id="error-password"></p>';
   }
   if (check != true) {
     validityForm.check = false;
+    document.getElementById('formCheckbox').classList.add('invalid')
     document.getElementById("error-check").innerHTML =
       "<p id='error-check' class='error'>Please check the box</p>";
   } else {
     validityForm.check = true;
+    document.getElementById('formCheckbox').classList.remove('invalid')
     document.getElementById("error-check").innerHTML =
       '<p id="error-check"></p>';
   }
   if (date == "") {
     validityForm.date = false;
+    document.getElementById('formDate').classList.add('invalid')
     document.getElementById("error-date").innerHTML =
       "<p id='error-date' class='error'>Please insert a valid date</p>";
   } else {
     validityForm.date = true;
+    document.getElementById('formDate').classList.remove('invalid')
     document.getElementById("error-date").innerHTML = '<p id="error-date"></p>';
   }
 
@@ -114,7 +133,8 @@ async function fetchPostData(insertData) {
     }
   );
   const data = await response.json;
-  console.log(data);
+  console.log(data)
+
 }
 
 const fetchGetData = async () => {
@@ -136,10 +156,9 @@ const fetchGetData = async () => {
         date: data[key].date,
       });
     }
-    document.getElementById("formUsername").innerHTML = loadedData[-1].username;
-    document.getElementById("formPassword").innerHTML = loadedData[-1].password;
-    document.getElementById("formCheck").innerHTML = loadedData[-1].checkbox;
-    document.getElementById("formDate").innerHTML = loadedData[-1].date;
+
+    return loadedData[loadedData.length -1]
+
   } catch (error) {
     console.log("Something");
   }
@@ -149,9 +168,29 @@ const displayContent = (id) => {
   const frameIds = ["form"];
   frameIds.map((frameId) => {
     if (frameId != id) {
-      document.getElementById(frameId).classList.add("visually-hidden");
+      document.getElementById(frameId).classList.add("hidden");
     } else {
-        document.getElementById(frameId).classList.remove("visually-hidden")
+        document.getElementById(frameId).classList.remove("hidden")
+
     }
   });
 };
+
+const openNav = () => {
+    document.getElementById("sidebar").style.width = "300px";
+    document.getElementById("main").style.marginLeft = "300px";
+  }
+  
+  /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+  const closeNav = () => {
+    document.getElementById("sidebar").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+  }
+
+  const openModal = () => {
+      document.getElementById('modal').classList.remove('hidden')
+  }
+
+  const closeModal = () => {
+      document.getElementById('modal').classList.add('hidden')
+  }
