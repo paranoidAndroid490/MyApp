@@ -4,10 +4,13 @@
 body {
   margin: 0;
 }
+
+/* Header */
+
 header nav{
     position: sticky;
 }
-/* Header */
+
 header nav ul {
   display: flex;
 }
@@ -303,6 +306,7 @@ text-area{
 }
 
 .box {
+    background-color: #818181;
     border: 1px solid black;
     border-radius: 1em;
     height: 10em;
