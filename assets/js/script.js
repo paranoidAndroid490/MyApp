@@ -34,12 +34,22 @@ const getData = (event) => {
       date: date,
     };
     fetchPostData(data);
-    console.log('ciao')
-    document
-      .getElementById("button-modal")
-      .classList.remove("hidden");
+    fetchGetData().then(result =>
+        dataModalHandler(result)
+    )
+
+    
   }
 };
+const dataModalHandler = (userData) => {
+    console.log(userData)
+    document.getElementById("modalUsername").innerHTML = userData.username;
+    document.getElementById("modalPassword").innerHTML = userData.password;
+    document.getElementById("modalCheck").innerHTML = userData.checkbox;
+    document.getElementById("modalDate").innerHTML = userData.date;
+    openModal()
+}
+
 
 const validityFormHandler = (
   username,
@@ -123,11 +133,11 @@ async function fetchPostData(insertData) {
     }
   );
   const data = await response.json;
-  console.log(data);
+  console.log(data)
+
 }
 
 const fetchGetData = async () => {
-    console.log('ciao')
   try {
     const response = await fetch(
       "https://my-app-1efbd-default-rtdb.firebaseio.com/data.json"
@@ -136,11 +146,9 @@ const fetchGetData = async () => {
       throw new Error("Something went wrong");
     }
     const data = await response.json();
-    console.log(data)
     const loadedData = [];
 
     for (const key in data) {
-        console.log(data[key])
       loadedData.push({
         username: data[key].username,
         password: data[key].password,
@@ -148,13 +156,9 @@ const fetchGetData = async () => {
         date: data[key].date,
       });
     }
-    console.log(loadedData)
-    console.log(loadedData[loadedData.length -1])
-    document.getElementById("formUsername").innerHTML = loadedData[loadedData.length -1].username;
-    document.getElementById("formPassword").innerHTML = loadedData[loadedData.length -1].password;
-    document.getElementById("formCheck").innerHTML = loadedData[loadedData.length -1].checkbox;
-    document.getElementById("formDate").innerHTML = loadedData[loadedData.length -1].date;
-    openModal()
+
+    return loadedData[loadedData.length -1]
+
   } catch (error) {
     console.log("Something");
   }
