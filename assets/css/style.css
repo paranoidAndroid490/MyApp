@@ -50,9 +50,9 @@ main ul {
   background-color: rgb(80, 80, 80);
   text-align: center;
   width: 2em;
-  padding: 2em;
-  padding-right: 3em;
+  padding-right: 4em;
   margin: 0;
+  box-sizing:content-box,
 }
 
 main ul li a {
@@ -167,7 +167,11 @@ footer {
       .menu-icon {
         width: 1em;
       }
-
+    /*Operations*/
+      .wrapper{
+          display: flex;
+          flex-direction: column;
+      }
 
 }
 
@@ -185,6 +189,7 @@ footer {
 .container{
     display: flex;
   flex-direction: column;
+    align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
   text-align: center;
@@ -287,4 +292,18 @@ text-area{
     display:flex;
     align-items:center;
     justify-content:center;
+}
+
+/* Operations Page*/
+.wrapper {
+    width:80%;
+    display: inline-grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2em;
+}
+
+.box {
+    border: 1px solid black;
+    border-radius: 1em;
+    height: 10em;
 }
