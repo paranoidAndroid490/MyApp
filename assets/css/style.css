@@ -309,5 +309,6 @@ text-area{
     background-color: #818181;
     border: 1px solid black;
     border-radius: 1em;
-    height: 10em;
+    height: auto;
+    
 }

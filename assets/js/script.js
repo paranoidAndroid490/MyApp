@@ -170,6 +170,7 @@ const displayContent = (id) => {
     { id: "operations", url: "./operations.html" },
     { id: "user-check", url: "./usercheck.html" },
     { id: "background", url: "./background.html" },
+    { id: "window", url: "./window.html" },
   ];
   frames.map((frame) => {
     if (frame.id == id) {
@@ -249,6 +250,7 @@ const getColor = (count) => {
 
 let timer;
 const startTimer = () => {
+    document.body.style.backgroundColor = getColor(counter())
   timer = setInterval(() => {
     document.body.style.backgroundColor = getColor(counter());
   }, 15000);
@@ -257,6 +259,20 @@ const stopTimer = () => {
   clearInterval(timer);
 };
 
-const changeBackground = () => {
-  startTimer();
-};
+
+const windowGetData = () => {
+    document.getElementById('appNameNav').innerHTML = "AppName: " + window.navigator.appName
+    document.getElementById('connectionNav').innerHTML = "Connection: " + window.navigator.connection
+    document.getElementById('languageNav').innerHTML = "Language: " + window.navigator.language
+    document.getElementById('userAgentNav').innerHTML = "UserAgent: " + window.navigator.userAgent
+    document.getElementById('userAgentDataNav').innerHTML = "UserAgentData: " + window.navigator.userAgentData
+    document.getElementById('vendorNav').innerHTML = "Vendor: " + window.navigator.vendor
+    document.getElementById('lenghtHistory').innerHTML = "Lenght: " + window.history.length
+    document.getElementById('lastModDoc').innerHTML = "Last Modified: " + window.document.lastModified
+    document.getElementById('activeEldDoc').innerHTML = "Active Element: " + window.document.activeElement
+    document.getElementById('baseURIDoc').innerHTML = "Base URI: " + window.document.baseURI 
+    document.getElementById('charsetDoc').innerHTML = "Charset: " + window.document.characterSet
+    document.getElementById('hostLoc').innerHTML = "Host: " + window.location.host
+    document.getElementById('hrefLoc').innerHTML = "Href: " + window.location.href
+    document.getElementById('pathNameLoc').innerHTML = "Pathname: " + window.location.pathname
+} 
