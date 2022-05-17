@@ -323,3 +323,11 @@ td img:hover{
     left: 30em;
     color: white;
 }
+
+.actions {
+    display: flex;
+    flex-direction: column;
+}
+.actions input{
+    margin:0.5em;
+}

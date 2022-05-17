@@ -172,6 +172,7 @@ const displayContent = (id) => {
     { id: "background", url: "./background.html" },
     { id: "window", url: "./window.html" },
     { id: "tables", url: "./tables.html" },
+    { id: "selection-sort", url: "./selection-sort.html" },
   ];
   frames.map((frame) => {
     if (frame.id == id) {
@@ -283,3 +284,31 @@ const bigPictureModalHandler = url => {
     openModal()
 }
 
+
+
+const selectionSort = () => {
+
+    const swapNumber = (array,index1,index2) => {
+        let temp = array[index1]
+        array[index1] = array[index2]
+        array[index2] = temp
+    }
+
+    let strings = document.getElementById('numbers').value.split('-')
+    let numbers = []
+    for (let i = 0; i< strings.length;i++){
+        numbers.push(+strings[i])
+    
+    let min_idx;
+    for (let i=0; i<numbers.length -1;i++){
+        min_idx = i
+        for (let j = i+1; j < numbers.length; j++){
+            if(numbers[j] < numbers[min_idx]){
+                min_idx = j
+            }
+        }
+        swapNumber(numbers,min_idx,i)
+    }
+    document.getElementById('result').innerHTML = numbers
+    }
+}
