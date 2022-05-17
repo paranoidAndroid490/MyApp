@@ -39,8 +39,8 @@ svg {
     align-items: center;
   }
 
-  .closebtn {
-    display: none;
+  .closebtn{
+      display:none;
   }
   
 /* Main */
@@ -270,6 +270,7 @@ text-area{
     background-color: rgba(0,0,0,0.5);
     z-index: 1;
     display:flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -311,4 +312,14 @@ text-area{
     border-radius: 1em;
     height: auto;
     
+}
+
+td img:hover{
+    width:400px;
+}
+
+.closeModalBtn{
+    position:relative;
+    left: 30em;
+    color: white;
 }

@@ -171,6 +171,7 @@ const displayContent = (id) => {
     { id: "user-check", url: "./usercheck.html" },
     { id: "background", url: "./background.html" },
     { id: "window", url: "./window.html" },
+    { id: "tables", url: "./tables.html" },
   ];
   frames.map((frame) => {
     if (frame.id == id) {
@@ -276,3 +277,9 @@ const windowGetData = () => {
     document.getElementById('hrefLoc').innerHTML = "Href: " + window.location.href
     document.getElementById('pathNameLoc').innerHTML = "Pathname: " + window.location.pathname
 } 
+
+const bigPictureModalHandler = url => {
+    document.getElementById('picture-big').src = url
+    openModal()
+}
+
