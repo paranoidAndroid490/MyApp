@@ -1,3 +1,5 @@
+/**This function provides for the acquisition ,
+ *  validation and storage of the data entered in the form by the user */
 const getData = (event) => {
   event.preventDefault();
   const username = document.getElementById("username").value;
@@ -37,6 +39,8 @@ const getData = (event) => {
     fetchGetData().then((result) => dataModalHandler(result));
   }
 };
+
+/**This function provides for the visualization of the data entered by the user in the modal */
 const dataModalHandler = (userData) => {
   document.getElementById("modalUsername").innerHTML = userData.username;
   document.getElementById("modalPassword").innerHTML = userData.password;
@@ -45,6 +49,7 @@ const dataModalHandler = (userData) => {
   openModal();
 };
 
+/**This function provides for the validation of the data entered by the user */
 const validityFormHandler = (
   username,
   password,
@@ -117,6 +122,7 @@ const validityFormHandler = (
   return validate;
 };
 
+/**This function fetches the data to the backend through the post method */
 const fetchPostData = async (insertData) => {
   const response = await fetch(
     "https://my-app-1efbd-default-rtdb.firebaseio.com/data.json",
@@ -129,7 +135,8 @@ const fetchPostData = async (insertData) => {
   const data = await response.json;
   console.log(data);
 };
-
+/**This function provides the fetch of the data from the beckend,
+ *  returns an object that is the last element inserted */
 const fetchGetData = async () => {
   try {
     const response = await fetch(
@@ -156,11 +163,13 @@ const fetchGetData = async () => {
   }
 };
 
+/**This function provides for the display of the main content within the page */
 const displayContent = (id) => {
   const frames = [
     { id: "form", url: "./form.html" },
     { id: "operations", url: "./operations.html" },
     { id: "user-check", url: "./usercheck.html" },
+    { id: "background", url: "./background.html" },
   ];
   frames.map((frame) => {
     if (frame.id == id) {
@@ -208,14 +217,46 @@ const operations = (operand) => {
 };
 
 const checkUser = () => {
-    const adminList = ['admin','marco']
-    const username = document.getElementById('user').value
-    
+  const adminList = ["admin", "marco"];
+  const username = document.getElementById("user").value;
 
-    let match = adminList.find(user => user === username)
-    if (match){
-        document.getElementById('user-check-result').innerHTML = "<p>The user inserted is an admin</p>"
+  let match = adminList.find((user) => user === username);
+  if (match) {
+    document.getElementById("user-check-result").innerHTML =
+      "<p>The user inserted is an admin</p>";
+  } else {
+    document.getElementById("user-check-result").innerHTML =
+      "<p>The user inserted is not an admin</p>";
+  }
+};
+
+const counter = (function () {
+  let count = 0;
+  return function () {
+    if (count < 4) {
+      return count++;
     } else {
-        document.getElementById('user-check-result').innerHTML = "<p>The user inserted is not an admin</p>"
+      count = 0;
+      return count;
     }
-}
+  };
+})();
+
+const getColor = (count) => {
+  const colors = ["red", "green", "blue", "yellow"];
+  return colors[count];
+};
+
+let timer;
+const startTimer = () => {
+  timer = setInterval(() => {
+    document.body.style.backgroundColor = getColor(counter());
+  }, 15000);
+};
+const stopTimer = () => {
+  clearInterval(timer);
+};
+
+const changeBackground = () => {
+  startTimer();
+};
