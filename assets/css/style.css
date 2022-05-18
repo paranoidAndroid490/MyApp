@@ -176,6 +176,7 @@ footer {
           flex-direction: column;
       }
 
+
 }
 
 
@@ -330,4 +331,8 @@ td img:hover{
 }
 .actions input{
     margin:0.5em;
+}
+
+.arrowBtn{
+    display: none;
 }

@@ -173,6 +173,7 @@ const displayContent = (id) => {
     { id: "window", url: "./window.html" },
     { id: "tables", url: "./tables.html" },
     { id: "selection-sort", url: "./selection-sort.html" },
+    { id: "insertion-sort", url: "./insertion-sort.html" },
   ];
   frames.map((frame) => {
     if (frame.id == id) {
@@ -255,7 +256,7 @@ const startTimer = () => {
     document.body.style.backgroundColor = getColor(counter())
   timer = setInterval(() => {
     document.body.style.backgroundColor = getColor(counter());
-  }, 15000);
+  }, 2000);
 };
 const stopTimer = () => {
   clearInterval(timer);
@@ -311,4 +312,28 @@ const selectionSort = () => {
     }
     document.getElementById('result').innerHTML = numbers
     }
+}
+
+
+const insertionSort = () => {
+    let strings = document.getElementById('numbers').value.split('-')
+    let numbers = []
+    for (let i = 0; i< strings.length;i++){
+        numbers.push(+strings[i])
+    }
+
+    for (let i = 0;i<numbers.length;i++){
+        let key = numbers[i]
+        let j = i - 1
+        console.log(j)
+
+        while(j >= 0 && numbers[j] > key){
+            numbers[j+1] = numbers[j]
+            j = j - 1
+        }
+
+        numbers[j+1] = key
+    }
+    document.getElementById('result').innerHTML = numbers
+    
 }
