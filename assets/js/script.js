@@ -1,3 +1,5 @@
+/**This function provides for the acquisition ,
+ *  validation and storage of the data entered in the form by the user */
 const getData = (event) => {
   event.preventDefault();
   const username = document.getElementById("username").value;
@@ -37,6 +39,8 @@ const getData = (event) => {
     fetchGetData().then((result) => dataModalHandler(result));
   }
 };
+
+/**This function provides for the visualization of the data entered by the user in the modal */
 const dataModalHandler = (userData) => {
   document.getElementById("modalUsername").innerHTML = userData.username;
   document.getElementById("modalPassword").innerHTML = userData.password;
@@ -45,6 +49,7 @@ const dataModalHandler = (userData) => {
   openModal();
 };
 
+/**This function provides for the validation of the data entered by the user */
 const validityFormHandler = (
   username,
   password,
@@ -117,6 +122,7 @@ const validityFormHandler = (
   return validate;
 };
 
+/**This function fetches the data to the backend through the post method */
 const fetchPostData = async (insertData) => {
   const response = await fetch(
     "https://my-app-1efbd-default-rtdb.firebaseio.com/data.json",
@@ -129,7 +135,8 @@ const fetchPostData = async (insertData) => {
   const data = await response.json;
   console.log(data);
 };
-
+/**This function provides the fetch of the data from the beckend,
+ *  returns an object that is the last element inserted */
 const fetchGetData = async () => {
   try {
     const response = await fetch(
@@ -156,11 +163,16 @@ const fetchGetData = async () => {
   }
 };
 
+/**This function provides for the display of the main content within the page */
 const displayContent = (id) => {
   const frames = [
     { id: "form", url: "./form.html" },
     { id: "operations", url: "./operations.html" },
     { id: "user-check", url: "./usercheck.html" },
+    { id: "background", url: "./background.html" },
+    { id: "window", url: "./window.html" },
+    { id: "tables", url: "./tables.html" },
+    { id: "selection-sort", url: "./selection-sort.html" },
   ];
   frames.map((frame) => {
     if (frame.id == id) {
@@ -208,14 +220,95 @@ const operations = (operand) => {
 };
 
 const checkUser = () => {
-    const adminList = ['admin','marco']
-    const username = document.getElementById('user').value
-    
+  const adminList = ["admin", "marco"];
+  const username = document.getElementById("user").value;
 
-    let match = adminList.find(user => user === username)
-    if (match){
-        document.getElementById('user-check-result').innerHTML = "<p>The user inserted is an admin</p>"
+  let match = adminList.find((user) => user === username);
+  if (match) {
+    document.getElementById("user-check-result").innerHTML =
+      "<p>The user inserted is an admin</p>";
+  } else {
+    document.getElementById("user-check-result").innerHTML =
+      "<p>The user inserted is not an admin</p>";
+  }
+};
+
+const counter = (function () {
+  let count = 0;
+  return function () {
+    if (count < 4) {
+      return count++;
     } else {
-        document.getElementById('user-check-result').innerHTML = "<p>The user inserted is not an admin</p>"
+      count = 0;
+      return count;
+    }
+  };
+})();
+
+const getColor = (count) => {
+  const colors = ["red", "green", "blue", "yellow"];
+  return colors[count];
+};
+
+let timer;
+const startTimer = () => {
+    document.body.style.backgroundColor = getColor(counter())
+  timer = setInterval(() => {
+    document.body.style.backgroundColor = getColor(counter());
+  }, 15000);
+};
+const stopTimer = () => {
+  clearInterval(timer);
+};
+
+
+const windowGetData = () => {
+    document.getElementById('appNameNav').innerHTML = "AppName: " + window.navigator.appName
+    document.getElementById('connectionNav').innerHTML = "Connection: " + window.navigator.connection
+    document.getElementById('languageNav').innerHTML = "Language: " + window.navigator.language
+    document.getElementById('userAgentNav').innerHTML = "UserAgent: " + window.navigator.userAgent
+    document.getElementById('userAgentDataNav').innerHTML = "UserAgentData: " + window.navigator.userAgentData
+    document.getElementById('vendorNav').innerHTML = "Vendor: " + window.navigator.vendor
+    document.getElementById('lenghtHistory').innerHTML = "Lenght: " + window.history.length
+    document.getElementById('lastModDoc').innerHTML = "Last Modified: " + window.document.lastModified
+    document.getElementById('activeEldDoc').innerHTML = "Active Element: " + window.document.activeElement
+    document.getElementById('baseURIDoc').innerHTML = "Base URI: " + window.document.baseURI 
+    document.getElementById('charsetDoc').innerHTML = "Charset: " + window.document.characterSet
+    document.getElementById('hostLoc').innerHTML = "Host: " + window.location.host
+    document.getElementById('hrefLoc').innerHTML = "Href: " + window.location.href
+    document.getElementById('pathNameLoc').innerHTML = "Pathname: " + window.location.pathname
+} 
+
+const bigPictureModalHandler = url => {
+    document.getElementById('picture-big').src = url
+    openModal()
+}
+
+
+
+const selectionSort = () => {
+
+    const swapNumber = (array,index1,index2) => {
+        let temp = array[index1]
+        array[index1] = array[index2]
+        array[index2] = temp
+    }
+
+    let strings = document.getElementById('numbers').value.split('-')
+    let numbers = []
+    for (let i = 0; i< strings.length;i++){
+        numbers.push(+strings[i])
+    
+    let min_idx;
+    for (let i=0; i<numbers.length -1;i++){
+        min_idx = i
+        for (let j = i+1; j < numbers.length; j++){
+            if(numbers[j] < numbers[min_idx]){
+                min_idx = j
+            }
+        }
+        swapNumber(numbers,min_idx,i)
+    }
+    document.getElementById('result').innerHTML = numbers
     }
 }

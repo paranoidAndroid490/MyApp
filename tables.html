@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="per il Seo" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Tables</title>
+  </head>
+  <body>
+    <section class="container">
+        <h2>Tables</h2>
+        
+        <table>
+            <tr>
+                <th>Picture One</th>
+                <th>Picture Two</th>
+                <th>Picture Three</th>
+            </tr>
+            <tr>
+                <td><img src="./assets/images/insect.jpg" alt="insectImage" width="300px" onclick="bigPictureModalHandler('./assets/images/insect.jpg')"/></td>
+                <td><img src="./assets/images/girl.jpg" alt="insectImage" width="300px" onclick="bigPictureModalHandler('./assets/images/girl.jpg')"/></td>
+                <td><img src="./assets/images/mountains.jpg" alt="insectImage" width="300px" onclick="bigPictureModalHandler('./assets/images/mountains.jpg')"/></td>
+            </tr>
+        </table>
+
+        <div id="modal" class="modal hidden">
+            <div class="closeModalBtn">
+            <a  onclick="closeModal()">X</a>
+        </div>
+            <img id="picture-big" src="" alt="Picture-big" width="1200px" />
+        </div>
+       
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>
