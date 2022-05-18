@@ -329,6 +329,10 @@ td img:hover{
     display: flex;
     flex-direction: column;
 }
+
+.actions div {
+    margin: 1em;
+}
 .actions input{
     margin:0.5em;
 }

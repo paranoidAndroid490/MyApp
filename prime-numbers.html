@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="per il Seo" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Prime Numbers</title>
+  </head>
+  <body>
+    <section class="container">
+      <h2>Prime Numbers</h2>
+
+      <div class="actions">
+        <div>
+          <label for="number"
+            >Insert an integer number to know if it's Prime</label
+          >
+          <input type="text" id="number" name="number" />
+          <button class="btn" onclick="isPrimeNumber(true)">Go!</button>
+          <div id="result"></div>
+        </div>
+        <div>
+          <label for="lenght"
+            >Insert an integer number to know the n prime numbers</label
+          >
+          <input type="text" id="lenght" name="lenght" />
+          <button class="btn" onclick="primeNumbersHandler()">Go!</button>
+          <div id="result2"></div>
+        </div>
+      </div>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>

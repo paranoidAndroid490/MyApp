@@ -174,6 +174,7 @@ const displayContent = (id) => {
     { id: "tables", url: "./tables.html" },
     { id: "selection-sort", url: "./selection-sort.html" },
     { id: "insertion-sort", url: "./insertion-sort.html" },
+    { id: "prime-numbers", url: "./prime-numbers.html" },
   ];
   frames.map((frame) => {
     if (frame.id == id) {
@@ -336,4 +337,50 @@ const insertionSort = () => {
     }
     document.getElementById('result').innerHTML = numbers
     
+}
+
+const isPrimeNumber = (domMod,number) => {
+    let num
+    if (number === undefined){
+        num = parseInt(document.getElementById('number').value)
+    } else {
+        num = number
+    }
+    let isPrime = true
+    if (num === 1 && domMod){
+        console.log('ciao')
+        isPrime = false
+        document.getElementById('result').innerHTML = "1 is neither prime nor composite number."
+    }
+    for (let i = 2; i < num; i++){
+        if(num % i === 0){
+            isPrime = false;
+            break
+        }
+    }
+    if(domMod && isPrime){
+        document.getElementById('result').innerHTML = "True"
+    } else if (domMod && !isPrime && num != 1){
+        document.getElementById('result').innerHTML = "False"
+    } else {
+        return isPrime
+    }
+    
+}   
+
+const primeNumbersHandler = () => {
+    let length = +document.getElementById('lenght').value
+    let numbers = []
+    let num = 2
+    while (numbers.length < length){
+        let isPrime = isPrimeNumber(false,num)
+        if(isPrime){
+            numbers.push(num)
+            num += 1
+        } else {
+            num += 1
+        }
+
+    } 
+    document.getElementById('result2').innerHTML = numbers
 }
