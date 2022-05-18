@@ -312,7 +312,12 @@ text-area{
     border: 1px solid black;
     border-radius: 1em;
     height: auto;
+    display:flex;
+    flex-direction: column;
     
+}
+.box span{
+    padding:1em;
 }
 
 td img:hover{

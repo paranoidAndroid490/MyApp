@@ -175,6 +175,7 @@ const displayContent = (id) => {
     { id: "selection-sort", url: "./selection-sort.html" },
     { id: "insertion-sort", url: "./insertion-sort.html" },
     { id: "prime-numbers", url: "./prime-numbers.html" },
+    { id: "hardware-store", url: "./hardware-store.html" },
   ];
   frames.map((frame) => {
     if (frame.id == id) {
@@ -383,4 +384,28 @@ const primeNumbersHandler = () => {
 
     } 
     document.getElementById('result2').innerHTML = numbers
+}
+
+const searchStoreHandler = () => {
+    const products = [
+        {brand:'dunlop',name:"Stivali professionali",weight:"1",dimension:"variable"},
+        {brand:'dunlop',name:"Stivali per agricoltura",weight:"1.2",dimension:"variable"},
+        {brand:'dwens',name:"Scarpa antinfortunistica running",weight:"0.5",dimension:"variable"},
+        {brand:'coppi',name:"Scarpa antinfortunistica running",weight:"0.7",dimension:"variable"},
+        {brand:'hm',name:"Valigetta attrezzi",weight:"4",dimension:"50cm"},
+        {brand:'hm',name:"Prolunga per bussole",weight:"0.1",dimension:"5cm"},
+        {brand:'hm',name:"Chiavi a bussola 1/2",weight:"0.2",dimension:"4cm"},
+        {brand:'hm',name:"Chiavi combinate a cricchetto",weight:"0.2",dimension:"10cm"},
+        
+    ]
+    let searchInput = document.getElementById('search').value.toLowerCase();
+    let string = ""
+    products.map(product => {
+        if(product.brand === searchInput){
+            string += "<div class='box'><span>Brand: " +product.brand+"</span><span>Name product: "+product.name+"</span><span>Weight: "+product.weight+"Kg</span><span>Weight: "+product.dimension+"</span></div>"
+        }
+    })
+    document.getElementById('result').innerHTML = string
+
+
 }
