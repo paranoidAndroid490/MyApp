@@ -160,6 +160,7 @@ const displayContent = (id) => {
   const frames = [
     { id: "form", url: "./form.html" },
     { id: "operations", url: "./operations.html" },
+    { id: "user-check", url: "./usercheck.html" },
   ];
   frames.map((frame) => {
     if (frame.id == id) {
@@ -190,15 +191,13 @@ const operations = (operand) => {
   let firstNum = prompt("Please, insert the first number");
   let secondNum = prompt("Please, insert the second number ");
   if (operand == "sum") {
-    document.getElementById("resultSum").innerHTML =
-      +firstNum + +secondNum;
+    document.getElementById("resultSum").innerHTML = +firstNum + +secondNum;
   }
   if (operand == "difference") {
     document.getElementById("resultDifference").innerHTML =
       +firstNum - +secondNum;
   }
   if (operand == "multiplication") {
-      console.log('ciao')
     document.getElementById("resultMultiplication").innerHTML =
       +firstNum * +secondNum;
   }
@@ -207,3 +206,16 @@ const operations = (operand) => {
       +firstNum / +secondNum;
   }
 };
+
+const checkUser = () => {
+    const adminList = ['admin','marco']
+    const username = document.getElementById('user').value
+    
+
+    let match = adminList.find(user => user === username)
+    if (match){
+        document.getElementById('user-check-result').innerHTML = "<p>The user inserted is an admin</p>"
+    } else {
+        document.getElementById('user-check-result').innerHTML = "<p>The user inserted is not an admin</p>"
+    }
+}
