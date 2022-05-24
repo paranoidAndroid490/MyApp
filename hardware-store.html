@@ -14,8 +14,14 @@
         
       
       <div class="actions">
-        <label for="search">Search a brand</label>
-        <input type="text" id="search" name="search" />
+        <label for="brands">Search a brand</label>
+        <select id="brands" >
+            <option value="default">-</option>
+            <option value="Dunlop">Dunlop</option>
+            <option value="Dwens">Dwens</option>
+            <option value="Coppi">Coppi</option>
+            <option value="HM">Hm</option>
+        </select>
         <button type="button" class="btn" onclick="searchStoreHandler()" >Search</button>
         <div id="result"></div>
     </div>
