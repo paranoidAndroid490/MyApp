@@ -177,6 +177,7 @@ const displayContent = (id) => {
     { id: "prime-numbers", url: "./prime-numbers.html" },
     { id: "hardware-store", url: "./hardware-store.html" },
     { id: "date-validation", url: "./date-validation.html" },
+    { id: "tabelline", url: "./tabelline.html" },
   ];
   frames.map((frame) => {
     if (frame.id == id) {
@@ -556,3 +557,14 @@ const validateDate = () => {
     document.getElementById("result").innerHTML = "Please insert a valid date";
   }
 };
+
+
+const tabellineHandler = () => {
+  number = document.getElementById('num').value;
+  console.log(number)
+  for (let i=0; i<= 10; i++){
+    let result = number * i;
+    document.getElementById("x"+i).innerHTML = "<span>"+number+" X "+i+" = "+result+"</span>"
+  }
+  
+}
