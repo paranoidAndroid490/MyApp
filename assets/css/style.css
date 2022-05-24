@@ -176,6 +176,7 @@ footer {
           flex-direction: column;
       }
 
+
 }
 
 
@@ -311,7 +312,12 @@ text-area{
     border: 1px solid black;
     border-radius: 1em;
     height: auto;
+    display:flex;
+    flex-direction: column;
     
+}
+.box span{
+    padding:1em;
 }
 
 td img:hover{
@@ -328,6 +334,14 @@ td img:hover{
     display: flex;
     flex-direction: column;
 }
+
+.actions div {
+    margin: 1em;
+}
 .actions input{
     margin:0.5em;
+}
+
+.arrowBtn{
+    display: none;
 }
