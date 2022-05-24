@@ -166,18 +166,19 @@ const fetchGetData = async () => {
 /**This function provides for the display of the main content within the page */
 const displayContent = (id) => {
   const frames = [
-    { id: "form", url: "./form.html" },
-    { id: "operations", url: "./operations.html" },
-    { id: "user-check", url: "./usercheck.html" },
-    { id: "background", url: "./background.html" },
-    { id: "window", url: "./window.html" },
-    { id: "tables", url: "./tables.html" },
-    { id: "selection-sort", url: "./selection-sort.html" },
-    { id: "insertion-sort", url: "./insertion-sort.html" },
-    { id: "prime-numbers", url: "./prime-numbers.html" },
-    { id: "hardware-store", url: "./hardware-store.html" },
-    { id: "date-validation", url: "./date-validation.html" },
-    { id: "tabelline", url: "./tabelline.html" },
+    { id: "form", url: "./esercizi/form.html" },
+    { id: "operations", url: "./esercizi/operations.html" },
+    { id: "user-check", url: "./esercizi/usercheck.html" },
+    { id: "background", url: "./esercizi/background.html" },
+    { id: "window", url: "./esercizi/window.html" },
+    { id: "tables", url: "./esercizi/tables.html" },
+    { id: "selection-sort", url: "./esercizi/selection-sort.html" },
+    { id: "insertion-sort", url: "./esercizi/insertion-sort.html" },
+    { id: "prime-numbers", url: "./esercizi/prime-numbers.html" },
+    { id: "hardware-store", url: "./esercizi/hardware-store.html" },
+    { id: "date-validation", url: "./esercizi/date-validation.html" },
+    { id: "tabelline", url: "./esercizi/tabelline.html" },
+    { id: "bubble-sort", url: "./esercizi/bubble-sort.html" },
   ];
   frames.map((frame) => {
     if (frame.id == id) {
@@ -302,13 +303,13 @@ const bigPictureModalHandler = (url) => {
   openModal();
 };
 
+const swapNumber = (array, index1, index2) => {
+  let temp = array[index1];
+  array[index1] = array[index2];
+  array[index2] = temp;
+};
 const selectionSort = () => {
-  const swapNumber = (array, index1, index2) => {
-    let temp = array[index1];
-    array[index1] = array[index2];
-    array[index2] = temp;
-  };
-
+  
   let strings = document.getElementById("numbers").value.split("-");
   let numbers = [];
   for (let i = 0; i < strings.length; i++) {
@@ -568,3 +569,24 @@ const tabellineHandler = () => {
   }
   
 }
+
+const bubbleSort = () => {
+
+  let strings = document.getElementById("numbers").value.split("-");
+  let numbers = [];
+  for (let i = 0; i < strings.length; i++) {
+    numbers.push(+strings[i]);
+
+  for (let i = 0; i < numbers.length -1; i++)
+{
+    for ( let j = 0; j < numbers.length-i-1; j++)
+    {
+        if (numbers[j] > numbers[j+1])
+        {
+        swapNumber(numbers,j,j+1);
+         
+        }
+    }
+}
+document.getElementById('result').innerHTML = numbers
+  }}
