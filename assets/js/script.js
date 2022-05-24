@@ -179,6 +179,7 @@ const displayContent = (id) => {
     { id: "date-validation", url: "./esercizi/date-validation.html" },
     { id: "tabelline", url: "./esercizi/tabelline.html" },
     { id: "bubble-sort", url: "./esercizi/bubble-sort.html" },
+    { id: "merge-sort", url: "./esercizi/merge-sort.html" },
   ];
   frames.map((frame) => {
     if (frame.id == id) {
@@ -590,3 +591,51 @@ const bubbleSort = () => {
 }
 document.getElementById('result').innerHTML = numbers
   }}
+
+  const mergeSort = (array) => {
+    if (array.length > 1){
+      let mid = array.length / 2
+      let L = array.slice(0,mid)
+      let R = array.slice(mid+1)
+      mergeSort(L)
+      mergeSort(R)
+      let i = 0
+      let j = 0
+      let k = 0
+      while(i<L.length && j<R.length){
+        if(L[i]<R[j]){
+          array[k] = L[i]
+          i+= 1
+        } else {
+          array[k] = R[j]
+          j += 1
+        }
+        k += 1
+      }
+      while (i < L.length){
+        array[k] = L[i]
+            i += 1
+            k += 1
+      }
+            
+    
+    while (j < R.length){
+      array[k] = R[j]
+            j += 1
+            k += 1
+    }
+            
+    }
+  }
+
+  const mergeSortHandler = () => {
+    let strings = document.getElementById("numbers").value.split("-");
+  let numbers = [];
+  for (let i = 0; i < strings.length; i++) {
+    numbers.push(+strings[i]);
+
+
+  }
+  mergeSort(numbers)
+  document.getElementById('result').innerHTML = numbers
+  }
