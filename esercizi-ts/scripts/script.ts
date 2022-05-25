@@ -1,3 +1,5 @@
+// 4 operations typescript excercise
+
 interface Operations {
     num1:number;
     num2:number;
@@ -47,4 +49,31 @@ const operationsHandler = (operand) => {
         document.getElementById('resultDivision').innerHTML = ""+operation.div()
     }
       
+}
+
+// User check typescript excercise
+
+class userChecker {
+
+    adminList:string[] = ['admin','marco']
+
+    constructor(public user:string) {
+}
+
+    check(){
+        let match:boolean = this.adminList.some(element=>element === this.user.toLowerCase());
+        return match
+    }
+
+}
+
+const userCheckHandler = () => {
+    const checker:userChecker = new userChecker((document.getElementById('user') as HTMLInputElement).value)
+    if (checker.check()){
+        document.getElementById("user-check-result").innerHTML =
+      "<p>The user inserted is an admin</p>";
+    } else {
+        document.getElementById("user-check-result").innerHTML =
+      "<p>The user inserted is not an admin</p>";
+    }
 }
