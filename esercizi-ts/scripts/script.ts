@@ -55,14 +55,20 @@ const operationsHandler = (operand) => {
 
 class userChecker {
 
-    adminList:string[] = ['admin','marco']
+    adminList:object = {admin:['admin','marco'],user:['marco','giovanni','luca','matteo']}
 
     constructor(public user:string) {
 }
 
     check(){
-        let match:boolean = this.adminList.some(element=>element === this.user.toLowerCase());
-        return match
+        let roles:string[] = [];
+        for (let role of Object.keys(this.adminList)){
+            let match = this.adminList[role].some(element => element === this.user)
+            if(match){
+                roles.push(role)
+            }
+        }
+        return roles
     }
 
 }
@@ -71,9 +77,18 @@ const userCheckHandler = () => {
     const checker:userChecker = new userChecker((document.getElementById('user') as HTMLInputElement).value)
     if (checker.check()){
         document.getElementById("user-check-result").innerHTML =
-      "<p>The user inserted is an admin</p>";
+      "<p>The user inserted is "+checker.check()+"</p>";
     } else {
         document.getElementById("user-check-result").innerHTML =
-      "<p>The user inserted is not an admin</p>";
+      "<p>The user inserted is not a user</p>";
     }
+}
+
+//Inheritance and Polymorphism typescript excercise
+
+class GeometricFigure {
+
+    constructor(public sides:number){}
+
+
 }

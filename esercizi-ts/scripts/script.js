@@ -39,12 +39,20 @@ var operationsHandler = function (operand) {
 var userChecker = /** @class */ (function () {
     function userChecker(user) {
         this.user = user;
-        this.adminList = ['admin', 'marco'];
+        this.adminList = { admin: ['admin', 'marco'], user: ['marco', 'giovanni', 'luca', 'matteo'] };
     }
     userChecker.prototype.check = function () {
         var _this = this;
-        var match = this.adminList.some(function (element) { return element === _this.user.toLowerCase(); });
-        return match;
+        var roles = [];
+        for (var _i = 0, _a = Object.keys(this.adminList); _i < _a.length; _i++) {
+            var role = _a[_i];
+            var match = this.adminList[role].some(function (element) { return element === _this.user; });
+            if (match) {
+                console.log(roles);
+                roles.push(role);
+            }
+        }
+        return roles;
     };
     return userChecker;
 }());
@@ -52,10 +60,17 @@ var userCheckHandler = function () {
     var checker = new userChecker(document.getElementById('user').value);
     if (checker.check()) {
         document.getElementById("user-check-result").innerHTML =
-            "<p>The user inserted is an admin</p>";
+            "<p>The user inserted is" + checker.check() + "</p>";
     }
     else {
         document.getElementById("user-check-result").innerHTML =
-            "<p>The user inserted is not an admin</p>";
+            "<p>The user inserted is not a user</p>";
     }
 };
+//Inheritance and Polymorphism typescript excercise
+var GeometricFigure = /** @class */ (function () {
+    function GeometricFigure(sides) {
+        this.sides = sides;
+    }
+    return GeometricFigure;
+}());
