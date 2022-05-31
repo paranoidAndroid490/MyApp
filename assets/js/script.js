@@ -166,20 +166,24 @@ const fetchGetData = async () => {
 /**This function provides for the display of the main content within the page */
 const displayContent = (id) => {
   const frames = [
-    { id: "form", url: "./esercizi/form.html" },
-    { id: "operations", url: "./esercizi/operations.html" },
-    { id: "user-check", url: "./esercizi/usercheck.html" },
-    { id: "background", url: "./esercizi/background.html" },
-    { id: "window", url: "./esercizi/window.html" },
-    { id: "tables", url: "./esercizi/tables.html" },
-    { id: "selection-sort", url: "./esercizi/selection-sort.html" },
-    { id: "insertion-sort", url: "./esercizi/insertion-sort.html" },
-    { id: "prime-numbers", url: "./esercizi/prime-numbers.html" },
-    { id: "hardware-store", url: "./esercizi/hardware-store.html" },
-    { id: "date-validation", url: "./esercizi/date-validation.html" },
-    { id: "tabelline", url: "./esercizi/tabelline.html" },
-    { id: "bubble-sort", url: "./esercizi/bubble-sort.html" },
-    { id: "merge-sort", url: "./esercizi/merge-sort.html" },
+    { id: "form", url: "./esercizi-js/form.html" },
+    { id: "operations", url: "./esercizi-js/operations.html" },
+    { id: "user-check", url: "./esercizi-js/usercheck.html" },
+    { id: "background", url: "./esercizi-js/background.html" },
+    { id: "window", url: "./esercizi-js/window.html" },
+    { id: "tables", url: "./esercizi-js/tables.html" },
+    { id: "selection-sort", url: "./esercizi-js/selection-sort.html" },
+    { id: "insertion-sort", url: "./esercizi-js/insertion-sort.html" },
+    { id: "prime-numbers", url: "./esercizi-js/prime-numbers.html" },
+    { id: "hardware-store", url: "./esercizi-js/hardware-store.html" },
+    { id: "date-validation", url: "./esercizi-js/date-validation.html" },
+    { id: "tabelline", url: "./esercizi-js/tabelline.html" },
+    { id: "bubble-sort", url: "./esercizi-js/bubble-sort.html" },
+    { id: "merge-sort", url: "./esercizi-js/merge-sort.html" },
+    { id: "operations-ts", url: "./esercizi-ts/operations.html" },
+    { id: "usercheck-ts", url: "./esercizi-ts/usercheck.html" },
+    { id: "inheritance-polymorphism-ts", url: "./esercizi-ts/inheritance-polymorphism.html" },
+    
   ];
   frames.map((frame) => {
     if (frame.id == id) {
@@ -310,7 +314,6 @@ const swapNumber = (array, index1, index2) => {
   array[index2] = temp;
 };
 const selectionSort = () => {
-  
   let strings = document.getElementById("numbers").value.split("-");
   let numbers = [];
   for (let i = 0; i < strings.length; i++) {
@@ -560,82 +563,85 @@ const validateDate = () => {
   }
 };
 
-
 const tabellineHandler = () => {
-  number = document.getElementById('num').value;
-  console.log(number)
-  for (let i=0; i<= 10; i++){
+  number = document.getElementById("num").value;
+  console.log(number);
+  for (let i = 0; i <= 10; i++) {
     let result = number * i;
-    document.getElementById("x"+i).innerHTML = "<span>"+number+" X "+i+" = "+result+"</span>"
+    document.getElementById("x" + i).innerHTML =
+      "<span>" + number + " X " + i + " = " + result + "</span>";
   }
-  
-}
+};
 
 const bubbleSort = () => {
-
   let strings = document.getElementById("numbers").value.split("-");
   let numbers = [];
   for (let i = 0; i < strings.length; i++) {
     numbers.push(+strings[i]);
 
-  for (let i = 0; i < numbers.length -1; i++)
-{
-    for ( let j = 0; j < numbers.length-i-1; j++)
-    {
-        if (numbers[j] > numbers[j+1])
-        {
-        swapNumber(numbers,j,j+1);
-         
+    for (let i = 0; i < numbers.length - 1; i++) {
+      for (let j = 0; j < numbers.length - i - 1; j++) {
+        if (numbers[j] > numbers[j + 1]) {
+          swapNumber(numbers, j, j + 1);
         }
+      }
     }
-}
-document.getElementById('result').innerHTML = numbers
-  }}
+    document.getElementById("result").innerHTML = numbers;
+  }
+};
 
-  const mergeSort = (array) => {
-    if (array.length > 1){
-      let mid = array.length / 2
-      let L = array.slice(0,mid)
-      let R = array.slice(mid+1)
-      mergeSort(L)
-      mergeSort(R)
-      let i = 0
-      let j = 0
-      let k = 0
-      while(i<L.length && j<R.length){
-        if(L[i]<R[j]){
-          array[k] = L[i]
-          i+= 1
-        } else {
-          array[k] = R[j]
-          j += 1
-        }
-        k += 1
+const mergeSort = (array) => {
+  if (array.length > 1) {
+    let mid = array.length / 2;
+    let L = array.slice(0, mid);
+    let R = array.slice(mid + 1);
+    mergeSort(L);
+    mergeSort(R);
+    let i = 0;
+    let j = 0;
+    let k = 0;
+    while (i < L.length && j < R.length) {
+      if (L[i] < R[j]) {
+        array[k] = L[i];
+        i += 1;
+      } else {
+        array[k] = R[j];
+        j += 1;
       }
-      while (i < L.length){
-        array[k] = L[i]
-            i += 1
-            k += 1
-      }
-            
-    
-    while (j < R.length){
-      array[k] = R[j]
-            j += 1
-            k += 1
+      k += 1;
     }
-            
+    while (i < L.length) {
+      array[k] = L[i];
+      i += 1;
+      k += 1;
+    }
+
+    while (j < R.length) {
+      array[k] = R[j];
+      j += 1;
+      k += 1;
     }
   }
+};
 
-  const mergeSortHandler = () => {
-    let strings = document.getElementById("numbers").value.split("-");
+const mergeSortHandler = () => {
+  let strings = document.getElementById("numbers").value.split("-");
   let numbers = [];
   for (let i = 0; i < strings.length; i++) {
     numbers.push(+strings[i]);
+  }
+  mergeSort(numbers);
+  document.getElementById("result").innerHTML = numbers;
+};
 
 
+const sideBarHandler = (id) => {
+  if(id === 'ts'){
+    document.getElementById('esercizi-ts').classList.remove('hidden');
+    document.getElementById('esercizi-js').classList.add('hidden');
   }
-  mergeSort(numbers)
-  document.getElementById('result').innerHTML = numbers
+  if(id === 'js'){
+    document.getElementById('esercizi-js').classList.remove('hidden');
+    document.getElementById('esercizi-ts').classList.add('hidden');
   }
+}

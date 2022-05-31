@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="per il Seo" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <title>Operations</title>
+  </head>
+  <body>
+    <section class="container">
+      <h2>Operations</h2>
+      <div class="wrapper">
+        <div class="box">
+          <h3>Sum</h3>
+          <button
+            type="button"
+            onclick="operationsHandler('sum')"
+            class="btn"
+          >Get result</button>
+          <div id="resultSum"></div>
+        </div>
+        <div class="box"><h3>Difference</h3>
+          <button type="button" onclick="operationsHandler('difference')" class="btn">Get result</button>
+            <div id="resultDifference"></div>
+        </div>
+        <div class="box"><h3>Multiplication</h3>
+          <button type="button" onclick="operationsHandler('multiplication')" class="btn">Get result</button>
+            <div id="resultMultiplication"></div>
+        </div>
+        <div class="box"><h3>Division</h3>
+          <button type="button" onclick="operationsHandler('division')" class="btn">Get result</button>
+            <div id="resultDivision"></div>
+        </div>
+      </div>
+    </section>
+    <script src="./scripts/script.js"></script>
+  </body>
+</html>
