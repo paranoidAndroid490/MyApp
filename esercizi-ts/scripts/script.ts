@@ -86,9 +86,29 @@ const userCheckHandler = () => {
 
 //Inheritance and Polymorphism typescript excercise
 
-class GeometricFigure {
+interface GeometricFigure {
+    sides:number;
+    h:number;
+    w:number
+}   print: ()=> Object;
 
-    constructor(public sides:number){}
+class circle implements GeometricFigure {
 
+    sides= 1
+    h:number
+    w:number
+    
+    constructor(h:number,w:number){
+        this.h = h;
+        this.w = w
+    }
+
+    print(){
+        return {
+            width: this.w,
+            height: this.h,
+            'border-radius': '50%',
+        }
+    }
 
 }
